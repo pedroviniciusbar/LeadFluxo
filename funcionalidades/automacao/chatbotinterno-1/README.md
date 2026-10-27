@@ -2,7 +2,7 @@
 icon: robot
 ---
 
-# CHATBOT 3.0 (ChatFlow)
+# CHATBOT
 
 O **ChatFlow** é o editor visual de chatbot do Whazing. Com ele você monta **fluxos de atendimento automático**: o bot envia mensagens, apresenta menus, coleta informações e encaminha o cliente para a fila, usuário ou outro fluxo — tudo sem precisar programar.
 
@@ -14,14 +14,18 @@ O **ChatFlow** é o editor visual de chatbot do Whazing. Com ele você monta **f
 4. [Tipos de blocos (interações)](./#tipos-de-blocos-interações)
 5. [Ordem das Interações](./#ordem-das-interações)
 6. [Configuração de Condições](./#configuração-de-condições)
+   * [Sem resposta (inatividade)](./#sem-resposta-inatividade)
 7. [Conexões entre etapas](./#conexões-entre-etapas)
 8. [Configurações do bot](./#configurações-do-bot)
-9. [Variáveis](./#variáveis)
-10. [Testando o fluxo (Simulador)](./#testando-o-fluxo-simulador)
-11. [Automações (integrações)](./#automações-integrações)
-12. [Atalhos de teclado](./#atalhos-de-teclado)
-13. [Exportar fluxo](./#exportar-fluxo)
-14. [Exemplos Práticos de Fluxos](./#exemplos-práticos-de-fluxos)
+   * [Ausência de resposta](./#ausência-de-resposta)
+9. [Atendimento em grupos](./#atendimento-em-grupos)
+10. [Variáveis](./#variáveis)
+11. [Testando o fluxo (Simulador)](./#testando-o-fluxo-simulador)
+12. [Automações (integrações)](./#automações-integrações)
+13. [Atalhos de teclado](./#atalhos-de-teclado)
+14. [Exportar fluxo](./#exportar-fluxo)
+15. [Importar fluxo](./#importar-fluxo)
+16. [Exemplos Práticos de Fluxos](./#exemplos-práticos-de-fluxos)
 
 ***
 
@@ -39,6 +43,7 @@ O **ChatFlow** é o editor visual de chatbot do Whazing. Com ele você monta **f
 * O bot **só avança de etapa quando o cliente envia uma mensagem** (exceto quando você usa o bloco **"Forçar executar condições"**, que permite avançar sem esperar resposta).
 
 > 💡 **Etapa inicial (Início):** representa o primeiro contato do cliente.
+>
 > * Caso seja o primeiro contato, o sistema **salva automaticamente as informações do cliente** na agenda.
 > * O bot **interage nos atendimentos iniciados pelos clientes**.
 > * O bot **para de interagir** quando o atendimento é assumido por um usuário.
@@ -63,6 +68,7 @@ A configuração do fluxo é feita pela interface visual do novo editor:
 * **Automações** — abre o painel de automações (integrações vinculadas a filas). Veja [Automações](./#automações-integrações).
 * **Testar** — abre o [Simulador](./#testando-o-fluxo-simulador) para validar o fluxo.
 * **Ajuda** — lista os atalhos de teclado.
+* **Importar JSON** — abre a janela de [importação de fluxo](./#importar-fluxo).
 * **Exportar** — baixa o fluxo em formato JSON (compatível com a importação do sistema).
 
 ### Lateral esquerda (paleta de blocos)
@@ -75,6 +81,7 @@ Contém um campo de **busca** e os blocos organizados por categoria:
 * **🔌 Integrações** — HTTP Request.
 
 Para usar: **clique** no bloco (cria uma nova etapa com ele) ou **arraste** para o canvas.
+
 > 💡 **Arrastar um bloco por cima de uma etapa já existente** adiciona o conteúdo **dentro daquela etapa**, em vez de criar uma etapa nova.
 
 ### Área central (canvas)
@@ -304,6 +311,21 @@ O fluxo salva automaticamente. Use o botão **Testar** para simular a conversa a
 * Adiciona o cliente a um **follow-up (funil)** ou o **remove** (opção "Remover cliente Follow-up").
 * Requer funis de follow-up cadastrados no sistema.
 
+### 📅 Agendamento
+
+#### 🗓️ Agendamento
+
+* Conduz a conversa sozinho (**profissional → serviço → data → horário → confirmação**) e cria o agendamento na **Agenda**, consultando a disponibilidade real — o bot nunca inventa horário.
+* Configurações: calendário, profissionais e serviços (Todos ou Selecionar), modo de apresentação (Automático/Texto/Lista/Botões), dias de busca e mensagens personalizáveis.
+* Tem **2 saídas fixas**: agendamento concluído com sucesso e não foi possível agendar (sem profissional, serviço ou horário disponível).
+* Requer o módulo **Agenda** configurado. Veja o guia completo: [Agendamento pelo Chatbot](../../agenda/agendamento-pelo-chatbot.md).
+
+#### 🔍 Gerenciar Agendamento
+
+* Consulta os **agendamentos futuros do contato** e permite **cancelar** o que ele escolher — não cria nem altera agendamento.
+* Tem **4 saídas fixas**: cancelado, mantido, sem agendamento e falha.
+* Requer o módulo **Agenda** configurado. Veja o guia completo: [Agendamento pelo Chatbot](../../agenda/agendamento-pelo-chatbot.md).
+
 ### 🔌 Integrações
 
 #### 🌐 HTTP Request
@@ -402,25 +424,54 @@ As **condições** definem o que o bot faz com a resposta do cliente. Ao receber
 * Casa com **qualquer mensagem** do cliente.
 * Deve ser posicionada **por último**, para não sobrepor as outras condições.
 
+#### 💤 Sem resposta (inatividade)
+
+**O que é inatividade?** É quando o cliente **para de responder** ao Chatbot durante o tempo que você definiu. Por exemplo: se uma etapa estiver configurada com inatividade de **10 minutos** e o cliente ficar esse tempo sem responder **naquela etapa**, o bot executa a ação configurada para a inatividade.
+
+**Como configurar:**
+
+1. Na aba **Condições** da etapa, clique em **"Adicionar condição"**.
+2. No campo **"Se"**, escolha o tipo **"Sem resposta"**.
+3. Informe o **"Tempo sem resposta (minutos)"** — um número inteiro, **no mínimo 1**. Se o campo estiver vazio, o sistema sugere **10 minutos**.
+4. Escolha a ação em **"Rotear para"** (veja as opções disponíveis abaixo).
+
+O próprio sistema explica o funcionamento:
+
+> _"Executa a ação abaixo se o cliente ficar este tempo sem responder nesta etapa. Se responder antes, é cancelado. A verificação roda a cada \~5 minutos."_
+
+Em linguagem simples:
+
+* se o cliente **responder antes do prazo**, a inatividade é **cancelada** e o fluxo segue normalmente;
+* a verificação é feita pelo sistema **de \~5 em \~5 minutos** — portanto, o disparo pode levar alguns minutos além do tempo exato configurado;
+* ao escolher o tipo **"Sem resposta"**, se a ação atual não for válida para inatividade, o sistema ajusta automaticamente para **Fila**.
+
+> 💡 Cada etapa tem suas **próprias condições** — então você pode configurar tempos e ações de inatividade **diferentes em cada etapa** (ou não configurar em algumas). E, como sempre, vale a regra: a **primeira condição que "casar"** é a executada.
+
+No canvas, a conexão dessa condição aparece identificada como **"Sem resposta: 10 min → Fila"** (tempo configurado + ação escolhida).
+
+<figure><img src="../../../.gitbook/assets/semresposta.png" alt=""><figcaption></figcaption></figure>
+
 ***
 
 ### Rotear para (o que acontece quando a condição é atendida)
 
 Ao atender uma condição, o bot executa a ação escolhida em **"Rotear para"**. As condições seguintes são ignoradas.
 
-| Ação | O que faz |
-| --- | --- |
-| **Etapa** | Avança para a **próxima etapa** selecionada (única ação com conexão visual no canvas). |
-| **Fila** | Transfere o atendimento para a **fila** selecionada. A partir daí o ticket **sai do bot** e as condições/configurações do fluxo não têm mais efeito. Permite definir uma **mensagem de transferência**. |
-| **Usuário** | Transfere para um **usuário** específico. O ticket sai do bot (se estiver sem fila, continua sem fila). Permite definir uma **mensagem de transferência**. |
-| **Fila + Usuário** | Transfere para a **fila e o usuário** escolhidos ao mesmo tempo. Permite definir uma **mensagem de transferência**. |
-| **Fechar Ticket** | **Finaliza automaticamente** o atendimento. Permite definir uma **mensagem de encerramento**. |
-| **Fazer Nada** | Não faz nada. Ideal combinado com "Qualquer resposta" por último para o bot **não repetir** a mensagem de "não entendi" — mas lembre-se de deixá-la por último. |
-| **Fluxo** | Transfere para **outro fluxo de chatbot** (ideal para dividir fluxos grandes e facilitar a manutenção). |
+| Ação               | O que faz                                                                                                                                                                                               |
+| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Etapa**          | Avança para a **próxima etapa** selecionada (única ação com conexão visual no canvas).                                                                                                                  |
+| **Fila**           | Transfere o atendimento para a **fila** selecionada. A partir daí o ticket **sai do bot** e as condições/configurações do fluxo não têm mais efeito. Permite definir uma **mensagem de transferência**. |
+| **Usuário**        | Transfere para um **usuário** específico. O ticket sai do bot (se estiver sem fila, continua sem fila). Permite definir uma **mensagem de transferência**.                                              |
+| **Fila + Usuário** | Transfere para a **fila e o usuário** escolhidos ao mesmo tempo. Permite definir uma **mensagem de transferência**.                                                                                     |
+| **Fechar Ticket**  | **Finaliza automaticamente** o atendimento. Permite definir uma **mensagem de encerramento**.                                                                                                           |
+| **Fazer Nada**     | Não faz nada. Ideal combinado com "Qualquer resposta" por último para o bot **não repetir** a mensagem de "não entendi" — mas lembre-se de deixá-la por último.                                         |
+| **Fluxo**          | Transfere para **outro fluxo de chatbot** (ideal para dividir fluxos grandes e facilitar a manutenção).                                                                                                 |
 
 > 💡 **Mensagem de transferência:** além da mensagem informada na condição, o bot também envia a **"Mensagem de saudação (Fila/Usuário)"** configurada no nó Configurações sempre que transfere para fila ou usuário.
 
 > 💡 **Automação na fila:** se a fila de destino tiver uma **automação vinculada** (veja [Automações](./#automações-integrações)), o badge da integração aparece ao lado da condição, e a automação é **executada automaticamente** quando o atendimento é transferido para essa fila.
+
+> 💡 **Condição "Sem resposta":** quando o tipo da condição é **"Sem resposta"** (inatividade), as opções **"Etapa"** e **"Fazer Nada"** não aparecem em "Rotear para" — apenas **Fila**, **Usuário**, **Fila + Usuário**, **Fechar Ticket** e **Fluxo**. Ao escolher **Fluxo**, informe o **"Fluxo de destino"**: quando o cliente ficar o tempo configurado sem responder, o bot **transfere a conversa para o fluxo escolhido**, que passa a conduzir o atendimento a partir dali.
 
 ***
 
@@ -428,8 +479,9 @@ Ao atender uma condição, o bot executa a ação escolhida em **"Rotear para"**
 
 Se **nenhuma condição for atendida**, o bot:
 
-1. Envia a mensagem padrão de resposta inválida (configurável no nó **Configurações**):
-   > "Desculpe! Não entendi sua resposta. Vamos tentar novamente! Escolha uma opção válida."
+1.  Envia a mensagem padrão de resposta inválida (configurável no nó **Configurações**):
+
+    > "Desculpe! Não entendi sua resposta. Vamos tentar novamente! Escolha uma opção válida."
 2. Se a opção **"Repetir etapa após resposta inválida"** estiver ativada (padrão), **reenvia as mensagens da etapa** para ajudar o cliente a escolher uma opção válida. Caso contrário, envia apenas a mensagem e aguarda uma nova resposta.
 
 Para evitar que o bot fique repetindo mensagens, adicione uma condição **"Qualquer resposta"** por último com a ação **"Fazer Nada"**.
@@ -465,8 +517,12 @@ Ao clicar no nó **Configurações**, um **painel/modal** abre com as opções g
 
 * **Cliente sem resposta:** define o que fazer quando o cliente **não responde dentro do tempo** configurado.
   * **Tempo de espera (minutos)** — use `0` para desativar.
-  * **Ação** — encaminhar para **Fila**, para **Usuário**, ou **Fechar Ticket**.
+  * **Ação** — encaminhar para **Fila**, para **Usuário**, **Fechar Ticket**, ou **Fluxo de destino** (transferir para outro fluxo). Ao escolher **Fluxo de destino**, selecione na lista qual fluxo receberá o cliente: quando o prazo for atingido, o bot transfere a conversa para esse fluxo.
 * **Mensagem de ausência:** mensagem enviada automaticamente quando o prazo é atingido, antes do encaminhamento.
+
+> 💡 **Configuração geral x por etapa:** além desta configuração geral do bot, cada **etapa** pode ter sua própria condição **"Sem resposta"**, com tempo e ação individuais — veja [Sem resposta (inatividade)](./#sem-resposta-inatividade). Assim, uma etapa pode ter um tempo, outra pode ter outro, e uma etapa pode não ter regra nenhuma.
+
+> **📸 Sugestão de print:** Painel "Configurações" do bot na seção "Ausência de resposta" com a ação "Fluxo de destino" selecionada.
 
 ### ⚙️ Demais configurações
 
@@ -478,10 +534,30 @@ Ao clicar no nó **Configurações**, um **painel/modal** abre com as opções g
   * **Não** — distribuição automática desativada.
   * **Aleatória** — escolhe um usuário da fila de forma randômica.
   * **Balanceada** — escolhe o usuário da fila **com menos atendimentos ativos**.
-  * ⚠️ As opções Aleatória/Balanceada só consideram usuários com **perfil "Usuário"** e que estejam **online**.
+  * ⚙️ Os **perfis** que participam da distribuição são definidos na [Distribuição Automática](../../gestao/distribuicao-automatica.md) da fila — a nota exibida no próprio editor diz: "Os perfis que participam da distribuição são definidos na configuração de Distribuição Automática da fila (Central de Configurações > Atendimento), não aqui." Os usuários considerados precisam estar **online**.
 * **Encerrar Atendimento:** lista de **palavras** que, se digitadas pelo cliente, **encerram o atendimento**. Acompanhada da **mensagem de despedida** enviada ao cliente.
 * **Palavras-chave para reiniciar o atendimento:** lista de palavras (ex.: `#menu`) que fazem o bot **voltar para o início** (etapa Boas-vindas) a partir de qualquer etapa.
 * **Mensagem de saudação (Fila/Usuário):** mensagem enviada automaticamente **sempre que o bot transfere** o atendimento para uma fila ou usuário.
+
+***
+
+## 👥 Atendimento em grupos
+
+Por segurança, o chatbot **não atende grupos por padrão** — ele responde apenas em conversas individuais. Agora você decide onde ele pode atuar.
+
+**Onde configurar:** na tela de **criar/editar o chatbot** (a mesma onde se define o **nome do bot**), na seção **"Atendimento em grupos"**.
+
+### Os três modos
+
+| Modo                                 | O que acontece                                                                                                                                                          |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Não atender grupos** _(padrão)_    | Comportamento de sempre: o bot ignora grupos e responde só no individual                                                                                                |
+| **Atender apenas grupos escolhidos** | O bot responde **somente** nos grupos da lista **"Grupos autorizados"** (com busca pelo nome do grupo). Grupos novos começam **sem autorização** — você escolhe um a um |
+| **Atender todos os grupos**          | O bot responde em **qualquer** grupo em que o número conectado participar                                                                                               |
+
+> 💡 **Bots criados antes desta melhoria** ficam automaticamente no modo padrão (**Não atender grupos**) — o comportamento deles não muda até você configurar.
+
+> ⚠️ **O bot só responde nos grupos se o canal não estiver configurado para ignorar mensagens de grupos.** Se a opção **"Ignorar Mensagens de Grupo"** estiver ativada nas [Configurações do Atendimento](../../gestao/configuracoes-do-atendimento.md), o sistema não abre ticket nenhum para grupos — e a configuração do bot não surte efeito. As duas configurações trabalham juntas.
 
 ***
 
@@ -491,22 +567,22 @@ As variáveis personalizam as mensagens com **dados do cliente, do atendimento, 
 
 ### Variáveis fixas (já disponíveis no sistema)
 
-| Variável | O que insere |
-| --- | --- |
-| `{{name}}` | Nome completo do contato |
-| `{{firstName}}` | Primeiro nome do contato |
-| `{{phoneNumber}}` | Telefone do contato |
-| `{{email}}` | E-mail do contato |
-| `{{protocol}}` | Número do protocolo do atendimento |
-| `{{ticket_id}}` | ID do ticket |
-| `{{fila}}` | Nome da fila do atendimento |
-| `{{user}}` | Nome do usuário (atendente) |
-| `{{userEmail}}` | E-mail do usuário |
-| `{{date}}` | Data atual |
-| `{{hour}}` | Hora atual |
-| `{{greeting}}` | Saudação conforme o horário (Bom dia / Boa tarde / Boa noite) |
-| `{{greetingEn}}` | Saudação em inglês |
-| `{{greetingEs}}` | Saudação em espanhol |
+| Variável          | O que insere                                                  |
+| ----------------- | ------------------------------------------------------------- |
+| `{{name}}`        | Nome completo do contato                                      |
+| `{{firstName}}`   | Primeiro nome do contato                                      |
+| `{{phoneNumber}}` | Telefone do contato                                           |
+| `{{email}}`       | E-mail do contato                                             |
+| `{{protocol}}`    | Número do protocolo do atendimento                            |
+| `{{ticket_id}}`   | ID do ticket                                                  |
+| `{{fila}}`        | Nome da fila do atendimento                                   |
+| `{{user}}`        | Nome do usuário (atendente)                                   |
+| `{{userEmail}}`   | E-mail do usuário                                             |
+| `{{date}}`        | Data atual                                                    |
+| `{{hour}}`        | Hora atual                                                    |
+| `{{greeting}}`    | Saudação conforme o horário (Bom dia / Boa tarde / Boa noite) |
+| `{{greetingEn}}`  | Saudação em inglês                                            |
+| `{{greetingEs}}`  | Saudação em espanhol                                          |
 
 ### Variáveis dinâmicas (Informações Adicionais do Contato)
 
@@ -577,29 +653,81 @@ O botão **"Automações"** (na barra superior) abre o painel de **automações*
 * O botão **"+ Adicionar automação"** cria uma automação **sem sair do editor** — ao terminar a ativação, a **fila resultante é aplicada automaticamente** na condição.
 * O botão "Automações" só aparece se o **plano da empresa** incluir o recurso de integrações.
 
-> 💡 O rodízio de atendimentos depende de um chatbot configurado para encaminhar para uma fila com **Auto Distribuir Atendimento** ativo. Veja: [Rodízio Automático de Atendimentos](./rodizio-automatico-de-atendimentos.md).
+> 💡 O rodízio de atendimentos depende de um chatbot configurado para encaminhar para uma fila com **Auto Distribuir Atendimento** ativo. Veja: [Rodízio Automático de Atendimentos](rodizio-automatico-de-atendimentos.md).
 
 ***
 
 ## ⌨️ Atalhos de teclado
 
-| Ação | Atalho |
-| --- | --- |
-| Desfazer | `Ctrl+Z` |
-| Refazer | `Ctrl+Shift+Z` |
-| Copiar seleção | `Ctrl+C` |
-| Colar | `Ctrl+V` |
-| Duplicar seleção | `Ctrl+D` |
-| Excluir seleção | `Delete` |
-| Salvar | `Ctrl+S` |
-| Selecionar múltiplos nós | `Shift + clique` |
-| Criar nó arrastando | Drag & Drop da paleta |
+| Ação                     | Atalho                |
+| ------------------------ | --------------------- |
+| Desfazer                 | `Ctrl+Z`              |
+| Refazer                  | `Ctrl+Shift+Z`        |
+| Copiar seleção           | `Ctrl+C`              |
+| Colar                    | `Ctrl+V`              |
+| Duplicar seleção         | `Ctrl+D`              |
+| Excluir seleção          | `Delete`              |
+| Salvar                   | `Ctrl+S`              |
+| Selecionar múltiplos nós | `Shift + clique`      |
+| Criar nó arrastando      | Drag & Drop da paleta |
 
 ***
 
 ## 📥 Exportar fluxo
 
 O botão de **exportar** (ícone de download na barra superior) baixa o fluxo atual em **JSON** no mesmo formato aceito pela **importação do sistema** — útil para salvar modelos, compartilhar fluxos ou restaurar em outra instalação.
+
+***
+
+## 📤 Importar fluxo
+
+Agora é possível **importar um fluxo de bot direto no editor** — em vez de montar tudo de novo, você traz as etapas e conexões prontas (de um modelo que você exportou, de outro bot ou de um arquivo recebido).
+
+### Como abrir
+
+* Pelo botão de **importar** (ícone de upload na barra superior);
+* Ou **colando (Ctrl+V) um JSON de fluxo no editor** — a janela já abre preenchida com o texto colado. (O colar normal das etapas copiadas dentro do próprio editor continua funcionando como sempre.)
+
+### Como trazer o fluxo
+
+Na janela **"Importar fluxo"**, escolha uma das formas:
+
+* **Cole o JSON** do fluxo no campo de texto;
+* Ou clique em **"Escolher arquivo"** e selecione um arquivo `.json`.
+
+O sistema **confere o arquivo** antes de aplicar: se estiver tudo certo, mostra _"JSON válido: X etapas e Y conexões."_ e libera o botão de importar; senão, avisa o problema.
+
+### O que acontece com o fluxo aberto
+O fluxo aberto **continua sendo o mesmo bot** — o nome e os lugares que apontam para ele não mudam. O que entra são as **etapas e conexões** do arquivo.
+
+### Dois modos de importação
+
+| Modo | O que faz |
+| ---- | --------- |
+| **Substituir** | Troca as etapas e conexões do fluxo aberto pelas do arquivo. Como mexe no que já existe, o sistema **pede confirmação** antes de aplicar. |
+| **Mesclar** | **Acrescenta** as etapas e conexões do arquivo às que já existem, sem remover nada. Aplica na hora — e dá para **desfazer com Ctrl+Z**. |
+
+No modo **Substituir**, aparece ainda a opção **"Importar também as configurações do fluxo"**:
+
+* **Marcada:** entram também as configurações gerais do bot do arquivo — mensagem de boas-vindas, sem resposta, fora de horário, despedida, máximo de tentativas e distribuição automática.
+* **Desmarcada (padrão):** as configurações atuais do seu bot **são preservadas** — apenas etapas e conexões são trocadas.
+
+> 💡 As etapas importadas entram com **identificações novas** — ao mesclar, elas não se confundem com as que já existem, e as conexões internas do arquivo continuam funcionando.
+
+### ⚠️ Depois de importar
+
+Um aviso da própria janela merece atenção:
+
+> _"Filas, usuários e fluxos referenciados pelas condições não são revalidados. Se o arquivo vem de outro ambiente, revise as transferências depois de importar."_
+
+Em linguagem simples: as condições podem apontar para **filas, usuários ou outros fluxos** que não existem na sua instalação. O sistema traz as etapas e conexões sem reclamar — quem religa os destinos é **você**: depois de importar, revise as condições e aponte para os destinos corretos do seu ambiente.
+
+### Fluxo típico
+
+1. No bot de origem, clique em **Exportar** e baixe o arquivo `.json` (veja [Exportar fluxo](./#exportar-fluxo));
+2. Abra o bot de destino;
+3. Clique em **Importar JSON** e escolha o arquivo — **Mesclar** para juntar com o que já existe, ou **Substituir** para trocar tudo;
+4. Revise as condições de transferência e use o **Testar** (Simulador) para conferir o resultado antes de ativar para os clientes.
 
 ***
 

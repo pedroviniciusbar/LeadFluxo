@@ -59,11 +59,11 @@ Cadastre cada pessoa que vai atender e defina o que ela pode ver e fazer.
 
 Escolha como o seu WhatsApp (ou outro canal) vai se conectar ao sistema.
 
-* [Canais Disponíveis — visão geral e qual escolher](canais-suportados/)
-* **WhatsApp gratuito (recomendado para começar):** [WhatsApp WuzAPI](canais-suportados/whatsapp-api-nao-oficial/whatsapp-wuzapi.md)
-* **WhatsApp com recursos extras** (botões, listas, localização): [WhatsApp API PLUS](canais-suportados/whatsapp-api-nao-oficial/whatsapp_api_plus/)
-* **WhatsApp oficial (Meta/WABA):** [API Oficial do WhatsApp](canais-suportados/api-oficial/api-oficial-do-whatsapp-meta.md)
-* **Telegram:** [Guia de Conexão do Telegram](canais-suportados/telegram.md)
+* [Canais Disponíveis — visão geral e qual escolher](canais-disponiveis/canais-disponiveis.md)
+* **WhatsApp gratuito (recomendado para começar):** [WhatsApp WuzAPI](canais-disponiveis/whatsapp-api-nao-oficial/whatsapp-wuzapi/)
+* **WhatsApp com recursos extras** (botões, listas, localização): [WhatsApp API PLUS](canais-disponiveis/whatsapp-api-nao-oficial/whatsapp_api_plus/)
+* **WhatsApp oficial (Meta/WABA):** [API Oficial do WhatsApp](canais-disponiveis/api-oficial/api-oficial-do-whatsapp-meta.md)
+* **Telegram:** [Guia de Conexão do Telegram](canais-disponiveis/telegram.md)
 
 ***
 
@@ -93,7 +93,7 @@ Crie mensagens que o sistema envia sozinho em momentos importantes do atendiment
 
 * **Avaliação de Atendimento** — peça uma nota ao cliente após cada atendimento: [Avaliação de Atendimento](funcionalidades/atendimento/avaliacao.md)
 * **Follow-up** — acompanhe o cliente automaticamente após o primeiro contato: [Follow-up](docs/modulos/follow-up.md)
-* **Horário de atendimento** — o sistema permite configurar o horário de atendimento por empresa, canal ou fila (com feriados), conforme descrito em [Principais Recursos](principais-recursos-do-sistema.md). O comportamento "fora do horário" é tratado dentro do [Chatbot Interno](funcionalidades/automacao/chatbotinterno/).
+* **Horário de atendimento** — o sistema permite configurar o horário de atendimento por empresa, canal ou fila (com feriados), conforme descrito em [Principais Recursos](principais-recursos-do-sistema.md). O comportamento "fora do horário" é tratado dentro do [Chatbot Interno](funcionalidades/automacao/chatbotinterno-1/README.md).
 
 ***
 
@@ -117,7 +117,7 @@ Crie mensagens que o sistema envia sozinho em momentos importantes do atendiment
 
 ## 🆘 Problemas comuns
 
-* **Mensagem não chega ou não envia:** veja [Mensagem não enviando](canais-suportados/whatsapp-api-nao-oficial/mensagem-nao-enviando.md) e [WhatsApp desconecta ou mensagens não chegam](solucao-de-problemas/whatsapp-e-mensagens/whatsapp-desconecta-ou-mensagens-nao-chegam.md).
+* **Mensagem não chega ou não envia:** veja [Mensagem não enviando](canais-disponiveis/whatsapp-api-nao-oficial/mensagem-nao-enviando.md) e [WhatsApp desconecta ou mensagens não chegam](solucao-de-problemas/whatsapp-e-mensagens/whatsapp-desconecta-ou-mensagens-nao-chegam.md).
 * **Usuário não vê as conversas:** confira as permissões e as filas do usuário (passo 3).
 * **Sistema lento ou não abre:** veja a [Solução de Problemas](solucao-de-problemas/).
 

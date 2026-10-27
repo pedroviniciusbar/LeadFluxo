@@ -59,13 +59,6 @@ Ainda em **Comercial → Receitas**, o modal **Configurações de Pagamento** re
 
 A configuração **"Carência após vencimento"** permite definir uma quantidade de dias em que o cliente poderá continuar utilizando o sistema mesmo após o vencimento da assinatura.
 
-Ideal para situações como:
-
-* Compensação de boletos bancários
-* Atrasos em transferências Pix
-* Finais de semana e feriados
-* Evitar bloqueios imediatos por pequenos atrasos
-
 #### Como funciona?
 
 Ao configurar uma quantidade de dias de carência:
@@ -89,10 +82,6 @@ No painel SaaS:
 
 Defina a quantidade de dias desejada no campo **Carência após vencimento (dias)**.
 
-<figure><img src="../../.gitbook/assets/confpagamento.png" alt=""><figcaption></figcaption></figure>
-
-***
-
 ### Gateway de Pagamento
 
 No modal **Configurações de Pagamento**, no campo **Gateway de Pagamento**, selecione qual gateway será utilizado para receber os pagamentos:
@@ -106,24 +95,42 @@ No modal **Configurações de Pagamento**, no campo **Gateway de Pagamento**, se
 
 Cada gateway possui seus próprios campos de configuração (chaves, tokens, certificados) e requer a configuração do **webhook** para que os pagamentos sejam baixados automaticamente.
 
-> 💡 Todos os gateways possuem **Carência após vencimento (dias)** e as demais configurações no mesmo modal.
-
-***
+> 💡 **Todos os gateways possuem Carência após vencimento (dias)** e as demais configurações no mesmo modal.
 
 ### 💸 Pushin Pay no Whazing
 
-Cada transação Pix possui taxa fixa de apenas **R$ 0,30**\
+Cada transação Pix possui taxa fixa de apenas **R$ 0,30**
+
 Valor definitivo — não é promoção.
 
-👉 Cadastre-se agora:\
+👉 Cadastre-se agora:
+
 [https://pushinpay.whazing.com.br](https://pushinpay.whazing.com.br)
+
+No Whazing você pode receber pagamentos via:
+
+✅ [InfinitePay](infinitepay.md) ✅ [Pushin Pay (Pix R$ 0,30 fixo)](configurar-pushin-pay.md) ✅ [Mercado Pago](configurar-mercado-pago.md) ✅ [Asaas](configurar-asaas.md) ✅ [EFI Bank](configurar-efi-bank.md) ✅ [Stripe](stripe.md)
 
 ***
 
-No Whazing você pode receber pagamentos via:\
-✅ [InfinitePay](infinitepay.md)\
-✅ [Pushin Pay (Pix R$ 0,30 fixo)](configurar-pushin-pay.md)\
-✅ [Mercado Pago](configurar-mercado-pago.md)\
-✅ [Asaas](configurar-asaas.md)\
-✅ [EFI Bank](configurar-efi-bank.md)\
-✅ [Stripe](stripe.md)
+## 🙋 Perguntas Frequentes (FAQ)
+
+### P: Por que estou tendo "erro processar pagamento"?
+
+**R:** Verifique se o cadastro da empresa tem os campos obrigatórios preenchidos:
+
+* ✅ **Nome** completo
+* ✅ **Telefone** com DDD
+* ✅ **E-mail** válido
+
+Esses campos são essenciais para o correto funcionamento dos pagamentos. Se algum estiver incompleto, o pagamento pode falhar.
+
+Sempre apague as faturas com erro que o sistema gera outra automaticamente.
+
+### P: As configurações são diferentes para cada gateway?
+
+**R:** Cada gateway possui seus próprios campos de configuração (chaves, tokens, certificados), mas todos compartilham as mesmas configurações gerais no modal **Configurações de Pagamento**, como a **Carência após vencimento (dias)**.
+
+### P: Posso usar múltiplos gateways simultaneamente?
+
+**R:** Não

@@ -7,7 +7,9 @@ No **Módulo SaaS** você controla sua instalação como administrador/revendedo
 ## 🗂️ O que você encontra nesta seção
 
 * **Configuração inicial** — Onboarding Inicial, opção de Ajuda, Comunicados;
+* **Personalização SaaS** — personalize o aviso exibido ao cliente antes de conectar um canal WhatsApp não oficial: [Personalização SaaS](personalizacao-saas.md);
 * **Financeiro e planos** — criação de planos, adicionais, gateways de pagamento, NFS-e, afiliados, armazenamento e WaCalls;
+* **Backup** — programação de backups automáticos do banco de dados: [Backup do Banco](backup-banco-de-dados.md);
 * **Inteligência Artificial** — IA integrada, gerador de chatbot e transcrição de áudio;
 * **API e Webhooks** — API SaaS, webhooks e integração de mensagens/alertas;
-* **Configurações gerais** — Gmail/OAuth, Cloudflare Turnstile, armazenamento S3 e Botão Coringa.
+* **Configurações gerais** — Gmail/OAuth, Cloudflare Turnstile, armazenamento S3, **Backup do Banco**, [Verificar Número ao Cadastrar Contato](verificar-numero-contatos.md) e Botão Coringa.

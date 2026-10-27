@@ -8,7 +8,7 @@ Acesse:
 
 **Automação e Integrações → IA e Integrações**
 
-Clique em **Nova integração Smart Reception** para começar.
+Clique em **Adicionar** e selecione **Inteligência Artificial - Recepcao Inteligente**.
 
 ***
 
@@ -152,11 +152,25 @@ Resumo da integração:
 | **Geral** | Tipo, nome, IA (compartilhada do sistema ou própria) e teste | — |
 | **Personalidade** | Modelo de atendimento e prompt principal/secundário | [Instruções eficientes](como-criar-instrucoes-eficientes-para-atendimento-automatico-com-ia.md) |
 | **Comportamento** | Histórico de atendimentos anteriores e tempo de espera para resposta | — |
-| **Automação** | Transferência por filas/palavras-chave, usuários, chatbot, etiquetas, Kanban, arquivos e chave PIX | [Etiquetas e Kanban](etiquetas-automaticas-e-kanban-com-ia.md) · [Arquivos](envio-de-arquivos-via-ia.md) · [PIX](botao-pix-automatico-no-atendimento.md) |
+| **Automação** | Transferência por filas/palavras-chave, usuários, chatbot, etiquetas, Kanban, arquivos, chave PIX e agendamento | [Etiquetas e Kanban](etiquetas-automaticas-e-kanban-com-ia.md) · [Arquivos](envio-de-arquivos-via-ia.md) · [PIX](botao-pix-automatico-no-atendimento.md) · [Agendamento pela IA](../../../funcionalidades/agenda/agendamento-pela-recepcao-inteligente.md) |
 | **Conhecimento** | Base de conhecimento, busca na web, MCP e correspondência semântica | [Base de conhecimento](base-de-conhecimento.md) · [Busca na web](busca-na-web.md) · [MCP](mcp-e-ferramentas-de-ia.md) · [Busca semântica](busca-semantica.md) |
 | **Voz** | Respostas por áudio (provedor, modelo e quando enviar áudio) | [Resposta por áudio](configuracao-de-resposta-por-audio.md) |
 | **Followup** | Follow-up automático e ausência de resposta | [Follow-up](follow-up-recepcao-inteligente.md) |
 | **Avançado** | Parâmetros técnicos (tokens, temperatura) e Command Analyzer (IA 2) | [Provedor personalizado](configurando-provedor-de-ia-personalizado-openai-compativel.md) |
+
+### ⚙️ Parâmetros Técnicos (aba Avançado)
+
+A aba **Avançado** só aparece quando você liga o toggle **"Configurações avançadas"** na aba **Geral**.
+
+| Campo | O que significa (sem enrolação) | Padrão |
+| --- | --- | --- |
+| **Máximo de tokens na resposta** | O tamanho máximo do texto que a IA pode escrever em cada resposta | `300` (recomendado: 200 a 500) |
+| **Temperatura** | O quão criativa a IA pode ser: baixa = mais objetiva e obediente, alta = mais criativa | `0.1` |
+| **Tentativas em caso de falha/baixa qualidade** | Quantas vezes o sistema tenta de novo quando a IA falha ou responde mal, antes de desistir | `3` |
+
+> 💡 Na maioria dos casos **não precisa mexer** nesses valores. Se mudou algo e quer voltar ao padrão, clique em **Restaurar valores recomendados**.
+
+***
 
 ### 🤖 Command Analyzer (IA 2)
 

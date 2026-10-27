@@ -1,0 +1,89 @@
+# 📅 Agenda
+
+A **Agenda** é o módulo do Whazing feito para gerenciar **horários de atendimento**: você cadastra os **serviços** que a empresa oferece, os **profissionais** que realizam esses serviços e os **horários** em que cada um pode atender. A partir daí, os agendamentos podem ser feitos pela própria equipe, pelo cliente (link público, site ou WhatsApp) ou até pela Inteligência Artificial — e tudo cai no mesmo calendário.
+
+> 💡 A Agenda é um **recurso vendido separadamente nos planos** (adicional). Se o seu plano não inclui o módulo, a tela do sistema informa isso e oferece a contratação do adicional — veja mais em [💰 Disponibilidade do módulo](./#-disponibilidade-do-módulo).
+
+<figure><img src="../../.gitbook/assets/agenda.png" alt=""><figcaption></figcaption></figure>
+
+## 🎯 Para que serve
+
+* **Organizar os horários** da equipe: cada profissional tem seus dias, seus horários e seus serviços.
+* **Evitar conflitos:** o sistema só oferece horários que estão realmente livres.
+* **Automatizar o atendimento:** o cliente pode agendar sozinho, receber lembrete no WhatsApp, confirmar ou cancelar sem precisar de atendente.
+* **Integrar com o Google Calendar e o Outlook:** os compromissos pessoais dos profissionais bloqueiam horários aqui, e os agendamentos podem ir para o calendário externo.
+
+## 👥 Para quem é útil
+
+Qualquer empresa que atende com hora marcada, por exemplo:
+
+* Barbearias, salões de beleza e clínicas de estética
+* Consultórios médicos, odontológicos e fisioterapia
+* Pet shops e clínicas veterinárias
+* Escritórios, academias e serviços por hora (manicure, personal trainer, aulas etc.)
+
+## ✅ O que você pode fazer com a Agenda
+
+| Recurso                      | O que faz                                                              | Documentação                                                                      |
+| ---------------------------- | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| **Agendamentos no painel**   | Criar, editar, remarcar, cancelar e excluir agendamentos no calendário — inclusive **agendamentos recorrentes** (toda semana, quinzenal, mensal) — com **limpeza fácil**: cancelar todos os futuros de um cliente de uma vez e apagar os cancelados em massa | [Como usar a Agenda](como-usar-a-agenda.md)                                       |
+| **Calendários e permissões** | Criar agendas separadas por **local de atendimento** (com endereço) e definir quem pode ver ou editar cada uma | [Calendários e Permissões](calendarios-e-permissoes.md)                           |
+| **Serviços**                 | Cadastrar os serviços, o tempo de duração e o **valor** de cada um     | [Serviços](servicos.md)                                                           |
+| **Profissionais**            | Cadastrar quem atende, seus serviços, horários, **cores** e folgas — com horários diferentes por local | [Profissionais](profissionais.md)                                                 |
+| **Google Agenda / Outlook**  | Conectar calendários externos e bloquear compromissos pessoais — com edição dos eventos externos direto daqui | [Google Agenda](google-agenda.md)                                                 |
+| **Lembretes**                | Enviar mensagem automática no WhatsApp antes do atendimento, com **horário permitido para envio** | [Lembretes](lembretes.md)                                                         |
+| **Link público e Embed**     | Deixar o cliente agendar sozinho pelo WhatsApp ou pelo seu site — com **foto do profissional**, **logo**, **valor dos serviços**, **endereço do local**, **datas bloqueadas automaticamente**, **mensagem de WhatsApp após o agendamento** e links **com dados já preenchidos** | [Link público e Embed](link-publico-e-embed.md)                                   |
+| **Recepção**                 | Painel do dia: acompanhar chegadas, fila de espera e atendimentos em tempo real | [Recepção](recepcao.md)                                                           |
+| **Relatórios da Agenda**     | Agenda do Dia, Agendamentos, Produtividade e Estatísticas              | [Relatórios da Agenda](relatorios-da-agenda.md)                                   |
+| **Chatbot**                  | O bot conduz a conversa e agenda (ou cancela) automaticamente — com **3 formas de agendamento** e opção **"Qualquer profissional"** | [Agendamento pelo Chatbot](agendamento-pelo-chatbot.md)                           |
+| **Recepção Inteligente**     | A IA consulta a agenda e agenda durante a conversa natural             | [Agendamento pela Recepção Inteligente](agendamento-pela-recepcao-inteligente.md) |
+| **Tela de Atendimento**      | O atendente agenda enquanto conversa com o cliente                     | [Agendamento pela tela de Atendimento](agendamento-pelo-atendimento.md)           |
+| **Cancelamento**             | Todas as formas de cancelar um agendamento — inclusive **os futuros de um cliente, todos de uma vez** | [Cancelamento de agendamentos](cancelamento-de-agendamentos.md)                   |
+| **Problemas comuns**         | Soluções para as dúvidas mais frequentes                               | [Dúvidas e problemas comuns](duvidas-e-problemas-comuns.md)                       |
+
+## 📚 Páginas desta seção
+
+* [Antes de começar](antes-de-comecar.md) — o que configurar primeiro e a ordem correta
+* [Como usar a Agenda](como-usar-a-agenda.md) — o dia a dia da tela principal
+* [Calendários e Permissões](calendarios-e-permissoes.md)
+* [Serviços](servicos.md)
+* [Profissionais](profissionais.md)
+* [Google Agenda](google-agenda.md)
+* [Lembretes](lembretes.md)
+* [Link público e Embed](link-publico-e-embed.md)
+* [Recepção](recepcao.md)
+* [Relatórios da Agenda](relatorios-da-agenda.md)
+* [Agendamento pelo Chatbot](agendamento-pelo-chatbot.md)
+* [Agendamento pela Recepção Inteligente](agendamento-pela-recepcao-inteligente.md)
+* [Agendamento pela tela de Atendimento](agendamento-pelo-atendimento.md)
+* [Cancelamento de agendamentos](cancelamento-de-agendamentos.md)
+* [Dúvidas e problemas comuns](duvidas-e-problemas-comuns.md)
+
+***
+
+## 💰 Disponibilidade do módulo
+
+A Agenda é um **adicional vendido separadamente** nos planos, conforme a configuração comercial do sistema.
+
+Se o seu plano não incluir a Agenda, ao acessar o menu **Agenda** o sistema exibe a mensagem **"Recurso indisponível"** e um aviso laranja informando que **"Seu plano não inclui a agenda. Contrate um adicional para liberar."**, com o botão **Comprar adicional** para liberar o recurso na hora.
+
+> 💡 Depois de contratar o adicional, a tela da Agenda é liberada automaticamente, sem precisar recarregar o sistema.
+
+### Cancelando o adicional da Agenda
+
+O administrador também pode **cancelar o adicional** da Agenda (por exemplo, quando a empresa parou de usar o módulo). Se ainda existirem **agendamentos futuros** criados, o sistema **pergunta o que fazer com eles**:
+
+| Opção                                                               | O que acontece                                                                 |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| **Cancelar adicional e excluir agendamentos futuros (recomendado)** | Os agendamentos futuros são **apagados** e os horários ficam livres            |
+| **Cancelar adicional e cancelar agendamentos futuros**              | Os agendamentos futuros ficam marcados como **Cancelados** (riscados), sem apagar |
+
+> 💡 Nos dois casos, os agendamentos **passados** não são mexidos — o **histórico** continua guardado.
+
+***
+
+## ⚠️ Não confunda com o "Agendamento" de mensagens
+
+O Whazing também tem um outro módulo chamado **Agendamento** (dentro de **Cadastros**), que serve para **enviar mensagens programadas** no WhatsApp — por exemplo, mandar uma mensagem automática em uma data futura.
+
+Esse módulo **não tem relação** com a Agenda de horários descrita nesta documentação. Se a sua intenção é gerenciar atendimentos com hora marcada, você está no lugar certo. 📅

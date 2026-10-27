@@ -5,9 +5,11 @@ icon: bullhorn
 
 # Campanhas
 
-Lembre-se campanha tem riscos altos de ban aconselhamos uso de números descartáveis caso queira adquirir números descartáveis aquecidos com preço justo acesse [https://disparo.whazing.com.br](https://disparo.whazing.com.br/)
+Lembre-se campanha tem riscos altos de ban aconselhamos uso de números descartáveis.
 
 ⚠️ Atualmente, as campanhas estão disponíveis apenas para o canal **WhatsApp**.
+
+> 🆕 **Novo módulo de campanhas:** agora existe um módulo novo e mais completo para envio por WhatsApp não oficial — com **sequência de mensagens**, **variações de texto** (com ajuda da IA), **intervalos variados**, pausas, horários e limite por dia. Veja [Campanha WhatsApp Não Oficial](campanha-whatsapp-nao-oficial.md). Esta página continua disponível para as campanhas criadas no modelo anterior.
 
 ***
 

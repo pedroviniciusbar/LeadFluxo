@@ -28,7 +28,7 @@ Conexão do WhatsApp feita pela **Meta** (empresa dona do WhatsApp). É a forma 
 
 ### API Não Oficial
 
-Conexão do WhatsApp feita por meios alternativos (ex.: WuzAPI, API PLUS, Baileys). Não tem custo por mensagem, mas pode ter instabilidade — por isso o Whazing recomenda usar o WhatsApp Business e seguir as boas práticas da documentação.
+Conexão do WhatsApp feita por meios alternativos (ex.: WuzAPI, API PLUS, Baileys — este último **descontinuado**). Não tem custo por mensagem, mas pode ter instabilidade — por isso o Whazing recomenda usar o WhatsApp Business e seguir as boas práticas da documentação.
 
 ### WABA
 
@@ -44,7 +44,7 @@ Código quadrado que o WhatsApp do celular escaneia para conectar o número ao s
 
 ### HUB
 
-Um serviço intermediário que conecta canais oficiais (WhatsApp, Instagram, Facebook, TikTok) ao Whazing, cuidando da parte técnica da conexão. Ex.: Hub NotificaMe, ConnectionHub, HUB Whazing.
+Um serviço intermediário que conecta canais oficiais (WhatsApp, Instagram, Facebook, TikTok) ao Whazing, cuidando da parte técnica da conexão. Ex.: Hub NotificaMe, ConnectionHub, Hub MultiAPIWA.
 
 ### Template (mensagem modelo)
 

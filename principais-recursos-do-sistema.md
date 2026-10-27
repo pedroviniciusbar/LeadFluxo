@@ -139,7 +139,7 @@ Ideal para empresas que desejam escalar o atendimento sem aumentar equipe.
 
 ***
 
-### 📲 Canais Suportados
+### 📲 Canais Disponíveis
 
 * **WhatsApp API Oficial** (Direto ou via HUB)
 * **WhatsApp API Não Oficial Plus** (Lista e Botões)
@@ -165,6 +165,12 @@ Ideal para empresas que desejam escalar o atendimento sem aumentar equipe.
 * WooCommerce
 * 2 Via Boleto Assas
 * GLPI
+
+***
+
+### 🌐 Rastreamento de Site
+
+* **Novo módulo:** script no site para acompanhar **visitantes em tempo real**, a **jornada** página a página, origem, campanhas e **conversões** — veja [Rastreamento de Site](funcionalidades/site-tracking.md)
 
 ***
 
